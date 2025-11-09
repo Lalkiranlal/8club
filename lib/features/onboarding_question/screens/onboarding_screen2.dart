@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test/assets/colors/colors.dart';
 import 'package:test/assets/fonts/fonts.dart';
+import 'package:test/core/utils/route_transitions.dart';
 import 'package:test/features/onboarding_question/widgets/audio_record_preview.dart';
 import 'package:test/features/onboarding_question/widgets/media_recorder_widget.dart';
 import 'package:test/features/onboarding_question/widgets/navigation_button.dart';
@@ -100,11 +101,9 @@ class _OnboardingScreenState2 extends ConsumerState<OnboardingScreen2> {
                   currentStep: 2,
                   totalSteps: 3,
                   onBack: () {
-                    // Navigate back to previous screen
                     Navigator.of(context).pop();
                   },
                   onClose: () {
-                    // Navigate all the way back to the first screen
                     Navigator.of(context).popUntil((route) => route.isFirst);
                   },
                 ),

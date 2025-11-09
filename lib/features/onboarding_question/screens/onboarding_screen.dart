@@ -5,6 +5,7 @@ import 'package:test/assets/colors/colors.dart';
 import 'package:test/assets/fonts/fonts.dart';
 import 'package:test/features/onboarding_question/providers/onboarding_provider.dart';
 import 'package:test/features/onboarding_question/screens/onboarding_screen2.dart';
+import 'package:test/core/utils/route_transitions.dart';
 import 'package:test/features/onboarding_question/widgets/experiences_grid_view.dart';
 import 'package:test/features/onboarding_question/widgets/navigation_button.dart';
 import 'package:test/features/onboarding_question/widgets/progress_indicator.dart';
@@ -143,13 +144,16 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 24.0, vertical: 16.0),
                         child: NextButton(
-                          onPressed:
-                              selectedExperiences.selectedIds.isNotEmpty &&
-                                      _commentController.text.isNotEmpty
-                                  ? () {
-                                     Navigator.push(context, MaterialPageRoute(builder: (context) => const OnboardingScreen2()));
-                                    }
-                                  : null,
+                          onPressed: selectedExperiences.selectedIds.isNotEmpty
+                              ? () {
+                                  Navigator.of(context).push(
+                                    SlidePageRoute(
+                                      page: const OnboardingScreen2(),
+                                      begin: const Offset(1.0, 0.0),
+                                    ),
+                                  );
+                                }
+                              : null,
                         ),
                       ),
                     ],
