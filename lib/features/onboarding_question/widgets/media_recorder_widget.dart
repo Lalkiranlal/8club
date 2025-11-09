@@ -121,6 +121,7 @@ class _MediaRecorderWidgetState extends ConsumerState<MediaRecorderWidget> {
     final hasRecording = _currentAudioPath != null;
 
     return Container(
+      height: 56,
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.transparent,
@@ -183,7 +184,7 @@ class _DashedLinePainter extends CustomPainter {
   _DashedLinePainter({
     required this.color,
     this.dashLength = 5.0,
-    this.dashGap = 3.0,
+    this.dashGap = 0,
     this.strokeWidth = 1.0,
   });
 
@@ -197,8 +198,8 @@ class _DashedLinePainter extends CustomPainter {
     double startY = 0;
     while (startY < size.height) {
       canvas.drawLine(
-        Offset(size.width / 2, startY),
-        Offset(size.width / 2, startY + dashLength),
+        Offset(size.width / 1.5, startY),
+        Offset(size.width / 1.5, startY + dashLength),
         paint,
       );
       startY += dashLength + dashGap;

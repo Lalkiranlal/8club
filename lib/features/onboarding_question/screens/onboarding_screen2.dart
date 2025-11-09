@@ -96,7 +96,18 @@ class _OnboardingScreenState2 extends ConsumerState<OnboardingScreen2> {
           SafeArea(
             child: Column(
               children: [
-                const OnboardingProgressBar(currentStep: 2, totalSteps: 3),
+                OnboardingProgressBar(
+                  currentStep: 2,
+                  totalSteps: 3,
+                  onBack: () {
+                    // Navigate back to previous screen
+                    Navigator.of(context).pop();
+                  },
+                  onClose: () {
+                    // Navigate all the way back to the first screen
+                    Navigator.of(context).popUntil((route) => route.isFirst);
+                  },
+                ),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
